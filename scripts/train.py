@@ -8,18 +8,19 @@ from preprocess_android import preprocess_data as preprocess_android
 #from preprocess_sqli import preprocess_data as preprocess_sqli
 
 # Select the dataset to train on
-DATASET = "Android"  # Choose from "DDoS", "Phishing", "SQLI", "Android"
-ALGORITHM = "LogisticRegression"  # Choose from "RandomForest", "LogisticRegression"
+DATASET = "Phishing"  # Choose from "DDoS", "Phishing", "Android"
+ALGORITHM = "RandomForest"  # Choose from "RandomForest", "LogisticRegression"
 
 # Load the correct dataset
 if DATASET == "DDoS":
     data_path = "../data/ddos_data.csv"
     target_column = "Label"
-    X_train, X_test, y_train, y_test = preprocess_ddos(data_path, target_column)
+    X_train, X_test, y_train, y_test, scaler = preprocess_ddos(data_path, target_column)
+    
 
 elif DATASET == "Phishing":
     data_path = "../data/phishing_data.csv"
-    target_column = "LABEL"
+    target_column = "CLASS_LABEL"
     X_train, X_test, y_train, y_test = preprocess_phishing(data_path, target_column)
 
 elif DATASET == "Android":
