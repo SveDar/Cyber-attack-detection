@@ -1,0 +1,4 @@
+# Don't commit venv files
+.venv/
+# Don't track the android dataset due to size > 100mb
+data/android_malware_data.csv
